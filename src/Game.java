@@ -16,7 +16,11 @@ public class Game {
     }
 
     public static boolean gameOver(Scanner s) {
-        // TODO: Write this method
-        return false;
+        String input;
+        do {
+            System.out.println("Game over! Would you like to play again? (y/n)");
+            input = s.next().toLowerCase();
+        } while (!input.equals("y") && !input.equals("n"));
+        return (input.equals("y"));
     }
 }
