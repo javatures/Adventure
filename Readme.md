@@ -7,4 +7,4 @@ A simple command-line adventure game.
     - [ ] Combat with randomly encountered enemies.
         - [ ] Enemy stats are pulled from a SQL database.
     - [ ] A final boss to fight.
-    - [ ] Upon game over, allows the player to restart the game.
+    - [x] Upon game over, allows the player to restart the game.
