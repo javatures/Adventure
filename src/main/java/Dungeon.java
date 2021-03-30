@@ -2,16 +2,16 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Dungeon {
-    private Scanner s;
-    private int room;
-    private Random r;
-    private Hero hero;
+    protected Scanner s;
+    protected int room;
+    protected Random r;
+    protected Hero hero;
 
     public Dungeon(Scanner s) {
         this.s = s;
         this.room = 1;
         this.r = new Random();
-        this.hero = new Hero();
+        this.hero = new Hero(r);
     }
 
     public void play() {
@@ -75,9 +75,11 @@ public class Dungeon {
 
     private boolean combat(String enemy) {
         // TODO: Use SQL to implement enemy statistics
+        return true;
     }
 
     private boolean chest() {
         // TODO: Use SQL to implement item statistics
+        return true;
     }
 }
