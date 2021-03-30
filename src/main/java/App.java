@@ -12,7 +12,8 @@ public class App {
     }
 
     public static void playGame(Scanner s) {
-        // TODO: Write this method
+        Dungeon dungeon = new Dungeon(s);
+        dungeon.play();
     }
 
     public static boolean gameOver(Scanner s) {
