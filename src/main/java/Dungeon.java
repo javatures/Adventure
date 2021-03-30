@@ -1,12 +1,17 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Dungeon {
     private Scanner s;
     private int room;
+    private Random r;
+    private Hero hero;
 
     public Dungeon(Scanner s) {
         this.s = s;
         this.room = 1;
+        this.r = new Random();
+        this.hero = new Hero();
     }
 
     public void play() {
@@ -33,12 +38,23 @@ public class Dungeon {
                     System.err.println("Error: room has an unexpected value!");
                     break;
             }
+            room++;
         }
     }
 
-    // TODO: Write room methods
     private boolean room1() {
-        return false; 
+        System.out.println("Welcome to the dungeon.");
+        int rng = r.nextInt(100);
+        if (rng < 50) {
+            System.out.println("Room 1 contains a goblin!");
+            return combat("goblin");
+        }
+        if (rng < 75) {
+            System.out.println("Room 1 is empty.");
+            return true;
+        }
+        System.out.println("Room 1 contains a chest!");
+        return chest();
     }
 
     private boolean room2() {
@@ -55,5 +71,13 @@ public class Dungeon {
 
     private boolean room5() {
         return true;
+    }
+
+    private boolean combat(String enemy) {
+        // TODO: Use SQL to implement enemy statistics
+    }
+
+    private boolean chest() {
+        // TODO: Use SQL to implement item statistics
     }
 }
