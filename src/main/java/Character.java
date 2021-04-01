@@ -1,11 +1,25 @@
+import java.util.Random;
+
 public abstract class Character {
     protected String type;
     protected int health;
     protected int attack;
     protected int defense;
     protected int dodge;
+    protected Random r;
 
-    public abstract boolean attack(Character opponent);
+    public boolean attack(Character opponent) {
+        if (r.nextInt(100) < opponent.getDodge()) {
+            return true;
+        }
+        int damage = getAttack() - opponent.getDefense();
+        return opponent.takeDamage(damage);
+    }
+
+    public boolean takeDamage(int damage) {
+        health -= damage;
+        return health > 0;
+    }
 
     public String getType() {
         return type;

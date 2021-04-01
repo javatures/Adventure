@@ -7,7 +7,6 @@ public class Hero extends Character {
     protected ArrayList<String> items;
     protected int maxHealth;
     protected int level;
-    protected Random r;
 
     public Hero(Random rand) {
         type = "player";
@@ -23,13 +22,31 @@ public class Hero extends Character {
         r = rand;
     }
 
+    @Override
+    public int getAttack() {
+        return attack + weapon.getAttack();
+    }
+
+    @Override
+    public int getDefense() {
+        return defense + armor.getDefense();
+    }
+
+    @Override
+    public int getDodge() {
+        return dodge + armor.getDodge();
+    }
+
     public int getLevel() {
         return level;
     }
 
-    public ArrayList<String> getItems() {
-        // TODO: Make this return a String of items instead
-        return items;
+    public String getItems() {
+        String output = "";
+        for (String item: items) {
+            output += item + "\n";
+        }
+        return output;
     }
 
     public Weapon getWeapon() {
@@ -38,11 +55,6 @@ public class Hero extends Character {
 
     public Armor getArmor() {
         return armor;
-    }
-
-    public boolean attack(Character opponent) {
-        // TODO: Write attack method
-        return true;
     }
 
     public void useItem(String item) {
