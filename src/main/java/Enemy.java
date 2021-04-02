@@ -1,11 +1,28 @@
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Random;
 
 public class Enemy extends Character{
     
-    public Enemy(String type, Random rand) {
+    public Enemy(String type, Random rand, Connection connect) {
         this.type = type;
         this.r = rand;
-        // TODO: Read from SQL database to get enemy stats
+        this.c = connect;
+        try {
+            ResultSet result = c.prepareStatement("select * from enemies").executeQuery();
+            while (result.next()) {
+                if (result.getString("enemytype").equals(type)) {
+                    health = result.getInt("health");
+                    attack = result.getInt("attack");
+                    defense = result.getInt("defense");
+                    dodge = result.getInt("dodge");
+                    break;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
-    
+
 }

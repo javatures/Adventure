@@ -1,5 +1,11 @@
 plugins {
     id 'application'
 }
+repositories {
+    mavenCentral()
+}
+dependencies {
+    implementation 'org.postgresql:postgresql:42.2.19.jre7'
+}
 apply plugin: 'application'
 mainClassName = 'App'

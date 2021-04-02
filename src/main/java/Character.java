@@ -1,3 +1,4 @@
+import java.sql.Connection;
 import java.util.Random;
 
 public abstract class Character {
@@ -7,6 +8,7 @@ public abstract class Character {
     protected int defense;
     protected int dodge;
     protected Random r;
+    protected Connection c;
 
     public boolean attack(Character opponent) {
         if (r.nextInt(100) < opponent.getDodge()) {

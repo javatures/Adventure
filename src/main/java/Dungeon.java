@@ -1,3 +1,6 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -5,13 +8,19 @@ public class Dungeon {
     protected Scanner s;
     protected int room;
     protected Random r;
+    protected Connection c;
     protected Hero hero;
 
     public Dungeon(Scanner s) {
         this.s = s;
         this.room = 1;
         this.r = new Random();
-        this.hero = new Hero(r);
+        try {
+            this.c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "password");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        this.hero = new Hero(r, c);
     }
 
     public void play() {

@@ -1,3 +1,4 @@
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -8,7 +9,7 @@ public class Hero extends Character {
     protected int maxHealth;
     protected int level;
 
-    public Hero(Random rand) {
+    public Hero(Random rand, Connection connect) {
         type = "player";
         level = 1;
         health = 10;
@@ -16,8 +17,9 @@ public class Hero extends Character {
         attack = 2;
         defense = 0;
         dodge = 5;
-        weapon = new Weapon("none");
-        armor = new Armor("none");
+        c = connect;
+        weapon = new Weapon("none", c);
+        armor = new Armor("none", c);
         items = new ArrayList<>();
         r = rand;
     }
