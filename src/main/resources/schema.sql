@@ -17,3 +17,6 @@ create table armors (
     dodge int
 );
 
+insert into enemies (enemytype, health, attack, defense, dodge) values ('goblin', 5, 1, 0, 10);
+insert into weapons (weaponname, attack) values ('none', 0);
+insert into armors (armorname, defense, dodge) values ('none', 0, 0);
