@@ -25,4 +25,15 @@ public class Enemy extends Character{
         }
     }
 
+    @Override
+    public boolean attack(Character opponent) {
+        if (r.nextInt(100) < opponent.getDodge()) {
+            System.out.println("The " + type + " attacks you, but you dodge!");
+            return true;
+        }
+        int damage = getAttack() - opponent.getDefense();
+        System.out.println("The " + type + " attacks you, dealing " + damage + " damage!");
+        return opponent.takeDamage(damage);
+    }
+
 }

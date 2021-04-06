@@ -69,8 +69,46 @@ public class Hero extends Character {
         dodge -= 50;
     }
 
+    @Override
+    public boolean attack(Character opponent) {
+        if (r.nextInt(100) < opponent.getDodge()) {
+            System.out.println("You attack, but the " + opponent.getType() + " dodges!");
+            return true;
+        }
+        int damage = getAttack() - opponent.getDefense();
+        System.out.println("You attack the " + opponent.getType() + ", dealing " + damage + " damage!");
+        return opponent.takeDamage(damage);
+    }
+
     public boolean useItem(String item) {
-        // TODO: Write useItem method
+        int index = items.indexOf(item);
+        if (index == -1) {
+            return false;
+        }
+        if (item.equals("hp potion")) {
+            System.out.println("Healed 10 HP!");
+            health = Math.min(health + 10, maxHealth);
+            items.remove(index);
+        }
+        else if (item.equals("max hp potion")) {
+            System.out.println("Increased max HP by 5!");
+            maxHealth += 5;
+            items.remove(index);
+        }
+        else if (item.equals("attack potion")) {
+            System.out.println("Increased attack by 1!");
+            attack++;
+            items.remove(index);
+        }
+        else if (item.equals("dodge potion")) {
+            System.out.println("Increased dodge chance by 5%!");
+            dodge += 5;
+            items.remove(index);
+        }
+        else {
+            System.err.println("Error: invalid item in items list!");
+            return false;
+        }
         return true;
     }
 

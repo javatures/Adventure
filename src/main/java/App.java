@@ -18,10 +18,12 @@ public class App {
 
     public static boolean gameOver(Scanner s) {
         String input;
-        do {
-            System.out.println("Game over! Would you like to play again? (y/n)");
+        System.out.println("Game over! Would you like to play again? (y/n)");
+        input = s.next().toLowerCase();
+        while (!input.equals("y") && !input.equals("n")) {
+            System.out.println("Invalid response. Would you like to play again? (y/n)");
             input = s.next().toLowerCase();
-        } while (!input.equals("y") && !input.equals("n"));
+        }
         return (input.equals("y"));
     }
 }
