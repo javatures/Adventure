@@ -8,6 +8,7 @@ public class Hero extends Character {
     protected ArrayList<String> items;
     protected int maxHealth;
     protected int level;
+    protected boolean defending;
 
     public Hero(Random rand, Connection connect) {
         type = "player";
@@ -17,6 +18,7 @@ public class Hero extends Character {
         attack = 2;
         defense = 0;
         dodge = 5;
+        defending = false;
         c = connect;
         weapon = new Weapon("none", c);
         armor = new Armor("none", c);
@@ -59,11 +61,27 @@ public class Hero extends Character {
         return armor;
     }
 
-    public void useItem(String item) {
+    public void defend() {
+        dodge += 50;
+    }
+
+    public void undefend() {
+        dodge -= 50;
+    }
+
+    public boolean useItem(String item) {
         // TODO: Write useItem method
+        return true;
     }
 
     public void levelUp() {
-        // TODO: Write levelUp method
+        level++;
+        maxHealth += 5;
+        health = maxHealth;
+        attack++;
+        if (level % 2 == 0) {
+            defense++;
+            dodge += 5;
+        }
     }
 }
