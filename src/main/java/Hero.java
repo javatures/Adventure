@@ -8,7 +8,6 @@ public class Hero extends Character {
     protected ArrayList<String> items;
     protected int maxHealth;
     protected int level;
-    protected boolean defending;
 
     public Hero(Random rand, Connection connect) {
         type = "player";
@@ -18,7 +17,6 @@ public class Hero extends Character {
         attack = 2;
         defense = 0;
         dodge = 5;
-        defending = false;
         c = connect;
         weapon = new Weapon("none", c);
         armor = new Armor("none", c);
@@ -61,12 +59,20 @@ public class Hero extends Character {
         return armor;
     }
 
-    public void defend() {
-        dodge += 50;
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
     }
 
-    public void undefend() {
-        dodge -= 50;
+    public void setArmor(Armor armor) {
+        this.armor = armor;
+    }
+
+    public String getStats() {
+        String output = "HP: " + health + "/" + maxHealth + "\n";
+        output += "Attack: " + attack + " + " + weapon.getAttack() + " from your " + weapon.getName() + "\n";
+        output += "Defense: " + defense + " + " + armor.getDefense() + " from your " + armor.getName() + "\n";
+        output += "Dodge: " + dodge + "% + " + armor.getDodge() + "% from your " + armor.getName() + "\n";
+        return output;
     }
 
     @Override
@@ -113,6 +119,7 @@ public class Hero extends Character {
     }
 
     public void levelUp() {
+        System.out.println("Level up! Your stats have increased!");
         level++;
         maxHealth += 5;
         health = maxHealth;

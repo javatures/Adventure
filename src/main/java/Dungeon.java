@@ -123,36 +123,180 @@ public class Dungeon {
     private boolean combat(String enemy) {
         Enemy e = new Enemy(enemy, r, c);
         while (true) {
-            System.out.println("You're in combat! Would you like to attack, defend, or use an item?");
+            System.out.println("You're in combat! What would you like to do?");
             String input = s.nextLine().toLowerCase();
             if (input.equals("attack")) {
-                if (!hero.attack(e))
-                return true;
-                if (!e.attack(hero))
-                return false;
-            }
-            else if (input.equals("defend")) {
-                hero.defend();
-                if (!e.attack(hero))
-                return false;
-                hero.undefend();
+                if (!hero.attack(e)) {
+                    System.out.println("You win!");
+                    hero.levelUp();
+                    return true;
+                }
+                if (!e.attack(hero)) {
+                    System.out.println("You died!");
+                    return false;
+                }
             }
             else if (input.split(" ")[0].equals("use")) {
                 if (hero.useItem(input.substring(4))) {
                     if (!e.attack(hero))
-                    return false;
+                        System.out.println("You died!");
+                        return false;
                 }
                 else {
                     System.out.println("Item not found. Please try again.");
                 }
             }
+            else if (input.equals("view items")) {
+                System.out.println(hero.getItems());
+            }
+            else if (input.equals("view stats")) {
+                System.out.println(hero.getStats());
+            }
+            else if (input.equals("help")) {
+                System.out.println("Possible commands:");
+                System.out.println("'attack' to attack the enemy");
+                System.out.println("'use [item name]' to use an item from your inventory");
+                System.out.println("'view items' to view the items in your inventory");
+                System.out.println("'view stats' to view your current stats\n");
+            }
             else {
-                System.out.println("Invalid command. Please try again.");
+                System.out.println("Invalid command. You can type 'help' for a list of commands.");
             }
         }
     }
 
     private void chest() {
-        // TODO: Use SQL to implement item statistics
+        boolean reward = false;
+        switch (room) {
+            case 1:
+                if (r.nextInt(100) < 50) {
+                    System.out.println("You found a dagger! It deals 1 damage, and your current weapon deals "
+                        + hero.getWeapon().getAttack() + " damage.");
+                    System.out.println("Would you like to switch weapons? (y/n)");
+                    String input = s.next().toLowerCase();
+                    while (!input.equals("y") && !input.equals("n")) {
+                        System.out.println("Invalid response. Would you like to switch weapons? (y/n)");
+                        input = s.next().toLowerCase();
+                    }
+                    if (input.equals("y"))
+                        hero.setWeapon(new Weapon("dagger", c));
+                    reward = true;
+                }
+                if (r.nextInt(100) < 50) {
+                    System.out.println("You found leather armor! It has 1 defense and 0 dodge, and your current armor has " +
+                        hero.getArmor().getDefense() + " defense and " + hero.getArmor().getDodge() + " dodge.");
+                    System.out.println("Would you like to switch armor? (y/n)");
+                    String input = s.next().toLowerCase();
+                    while (!input.equals("y") && !input.equals("n")) {
+                        System.out.println("Invalid response. Would you like to switch armor? (y/n)");
+                        input = s.next().toLowerCase();
+                    }
+                    if (input.equals("y"))
+                        hero.setArmor(new Armor("leather", c));
+                    reward = true;
+                }
+                if (!reward) {
+                    System.out.println("You found a HP potion! It has been added to your inventory.");
+                }
+                break;
+            case 2:
+            if (r.nextInt(100) < 50) {
+                System.out.println("You found a sword! It deals 2 damage, and your current weapon deals "
+                    + hero.getWeapon().getAttack() + " damage.");
+                System.out.println("Would you like to switch weapons? (y/n)");
+                String input = s.next().toLowerCase();
+                while (!input.equals("y") && !input.equals("n")) {
+                    System.out.println("Invalid response. Would you like to switch weapons? (y/n)");
+                    input = s.next().toLowerCase();
+                }
+                if (input.equals("y"))
+                    hero.setWeapon(new Weapon("sword", c));
+                reward = true;
+            }
+            if (r.nextInt(100) < 50) {
+                System.out.println("You found light armor! It has 0 defense and 10 dodge, and your current armor has " +
+                    hero.getArmor().getDefense() + " defense and " + hero.getArmor().getDodge() + " dodge.");
+                System.out.println("Would you like to switch armor? (y/n)");
+                String input = s.next().toLowerCase();
+                while (!input.equals("y") && !input.equals("n")) {
+                    System.out.println("Invalid response. Would you like to switch armor? (y/n)");
+                    input = s.next().toLowerCase();
+                }
+                if (input.equals("y"))
+                    hero.setArmor(new Armor("light", c));
+                reward = true;
+            }
+            if (!reward) {
+                System.out.println("You found a max HP potion! It has been added to your inventory.");
+            }
+            break;
+            case 3:
+            if (r.nextInt(100) < 50) {
+                System.out.println("You found a sword! It deals 2 damage, and your current weapon deals "
+                    + hero.getWeapon().getAttack() + " damage.");
+                System.out.println("Would you like to switch weapons? (y/n)");
+                String input = s.next().toLowerCase();
+                while (!input.equals("y") && !input.equals("n")) {
+                    System.out.println("Invalid response. Would you like to switch weapons? (y/n)");
+                    input = s.next().toLowerCase();
+                }
+                if (input.equals("y"))
+                    hero.setWeapon(new Weapon("sword", c));
+                reward = true;
+            }
+            if (r.nextInt(100) < 50) {
+                System.out.println("You found iron armor! It has 2 defense and 0 dodge, and your current armor has " +
+                    hero.getArmor().getDefense() + " defense and " + hero.getArmor().getDodge() + " dodge.");
+                System.out.println("Would you like to switch armor? (y/n)");
+                String input = s.next().toLowerCase();
+                while (!input.equals("y") && !input.equals("n")) {
+                    System.out.println("Invalid response. Would you like to switch armor? (y/n)");
+                    input = s.next().toLowerCase();
+                }
+                if (input.equals("y"))
+                    hero.setArmor(new Armor("iron", c));
+                reward = true;
+            }
+            if (!reward) {
+                System.out.println("You found a dodge potion! It has been added to your inventory.");
+            }
+            break;
+            case 4:
+            if (r.nextInt(100) < 50) {
+                System.out.println("You found Excalibur! It deals 3 damage, and your current weapon deals "
+                    + hero.getWeapon().getAttack() + " damage.");
+                System.out.println("Would you like to switch weapons? (y/n)");
+                String input = s.next().toLowerCase();
+                while (!input.equals("y") && !input.equals("n")) {
+                    System.out.println("Invalid response. Would you like to switch weapons? (y/n)");
+                    input = s.next().toLowerCase();
+                }
+                if (input.equals("y"))
+                    hero.setWeapon(new Weapon("excalibur", c));
+                reward = true;
+            }
+            if (r.nextInt(100) < 50) {
+                System.out.println("You found iron armor! It has 2 defense and 0 dodge, and your current armor has " +
+                    hero.getArmor().getDefense() + " defense and " + hero.getArmor().getDodge() + " dodge.");
+                System.out.println("Would you like to switch armor? (y/n)");
+                String input = s.next().toLowerCase();
+                while (!input.equals("y") && !input.equals("n")) {
+                    System.out.println("Invalid response. Would you like to switch armor? (y/n)");
+                    input = s.next().toLowerCase();
+                }
+                if (input.equals("y"))
+                    hero.setArmor(new Armor("iron", c));
+                reward = true;
+            }
+            if (!reward) {
+                System.out.println("You found a HP potion! It has been added to your inventory.");
+                System.out.println("You found an attack potion! It has been added to your inventory.");
+            }
+            break;
+            case 5: break;
+            default:
+            System.err.println("Error: Invalid room when opening a chest!");
+            break;
+        }
     }
 }
