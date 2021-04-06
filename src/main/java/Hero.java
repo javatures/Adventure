@@ -69,9 +69,18 @@ public class Hero extends Character {
 
     public String getStats() {
         String output = "HP: " + health + "/" + maxHealth + "\n";
-        output += "Attack: " + attack + " + " + weapon.getAttack() + " from your " + weapon.getName() + "\n";
-        output += "Defense: " + defense + " + " + armor.getDefense() + " from your " + armor.getName() + "\n";
-        output += "Dodge: " + dodge + "% + " + armor.getDodge() + "% from your " + armor.getName() + "\n";
+        output += "Attack: " + attack;
+        if (!weapon.getName().equals("none"))
+            output += " + " + weapon.getAttack() + " from your " + weapon.getName();
+        output += "\n";
+        output += "Defense: " + defense;
+        if (!armor.getName().equals("none"))
+            output += " + " + armor.getDefense() + " from your " + armor.getName();
+        output += "\n";
+        output += "Dodge: " + dodge + "%";
+        if (!armor.getName().equals("none"))
+            output += " + " + armor.getDodge() + "% from your " + armor.getName();
+        output += "\n";
         return output;
     }
 

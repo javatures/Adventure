@@ -173,10 +173,10 @@ public class Dungeon {
                     System.out.println("You found a dagger! It deals 1 damage, and your current weapon deals "
                         + hero.getWeapon().getAttack() + " damage.");
                     System.out.println("Would you like to switch weapons? (y/n)");
-                    String input = s.next().toLowerCase();
+                    String input = s.nextLine().toLowerCase();
                     while (!input.equals("y") && !input.equals("n")) {
                         System.out.println("Invalid response. Would you like to switch weapons? (y/n)");
-                        input = s.next().toLowerCase();
+                        input = s.nextLine().toLowerCase();
                     }
                     if (input.equals("y"))
                         hero.setWeapon(new Weapon("dagger", c));
@@ -186,10 +186,10 @@ public class Dungeon {
                     System.out.println("You found leather armor! It has 1 defense and 0 dodge, and your current armor has " +
                         hero.getArmor().getDefense() + " defense and " + hero.getArmor().getDodge() + " dodge.");
                     System.out.println("Would you like to switch armor? (y/n)");
-                    String input = s.next().toLowerCase();
+                    String input = s.nextLine().toLowerCase();
                     while (!input.equals("y") && !input.equals("n")) {
                         System.out.println("Invalid response. Would you like to switch armor? (y/n)");
-                        input = s.next().toLowerCase();
+                        input = s.nextLine().toLowerCase();
                     }
                     if (input.equals("y"))
                         hero.setArmor(new Armor("leather", c));
@@ -204,10 +204,10 @@ public class Dungeon {
                 System.out.println("You found a sword! It deals 2 damage, and your current weapon deals "
                     + hero.getWeapon().getAttack() + " damage.");
                 System.out.println("Would you like to switch weapons? (y/n)");
-                String input = s.next().toLowerCase();
+                String input = s.nextLine().toLowerCase();
                 while (!input.equals("y") && !input.equals("n")) {
                     System.out.println("Invalid response. Would you like to switch weapons? (y/n)");
-                    input = s.next().toLowerCase();
+                    input = s.nextLine().toLowerCase();
                 }
                 if (input.equals("y"))
                     hero.setWeapon(new Weapon("sword", c));
@@ -217,10 +217,10 @@ public class Dungeon {
                 System.out.println("You found light armor! It has 0 defense and 10 dodge, and your current armor has " +
                     hero.getArmor().getDefense() + " defense and " + hero.getArmor().getDodge() + " dodge.");
                 System.out.println("Would you like to switch armor? (y/n)");
-                String input = s.next().toLowerCase();
+                String input = s.nextLine().toLowerCase();
                 while (!input.equals("y") && !input.equals("n")) {
                     System.out.println("Invalid response. Would you like to switch armor? (y/n)");
-                    input = s.next().toLowerCase();
+                    input = s.nextLine().toLowerCase();
                 }
                 if (input.equals("y"))
                     hero.setArmor(new Armor("light", c));
@@ -235,10 +235,10 @@ public class Dungeon {
                 System.out.println("You found a sword! It deals 2 damage, and your current weapon deals "
                     + hero.getWeapon().getAttack() + " damage.");
                 System.out.println("Would you like to switch weapons? (y/n)");
-                String input = s.next().toLowerCase();
+                String input = s.nextLine().toLowerCase();
                 while (!input.equals("y") && !input.equals("n")) {
                     System.out.println("Invalid response. Would you like to switch weapons? (y/n)");
-                    input = s.next().toLowerCase();
+                    input = s.nextLine().toLowerCase();
                 }
                 if (input.equals("y"))
                     hero.setWeapon(new Weapon("sword", c));
@@ -248,10 +248,10 @@ public class Dungeon {
                 System.out.println("You found iron armor! It has 2 defense and 0 dodge, and your current armor has " +
                     hero.getArmor().getDefense() + " defense and " + hero.getArmor().getDodge() + " dodge.");
                 System.out.println("Would you like to switch armor? (y/n)");
-                String input = s.next().toLowerCase();
+                String input = s.nextLine().toLowerCase();
                 while (!input.equals("y") && !input.equals("n")) {
                     System.out.println("Invalid response. Would you like to switch armor? (y/n)");
-                    input = s.next().toLowerCase();
+                    input = s.nextLine().toLowerCase();
                 }
                 if (input.equals("y"))
                     hero.setArmor(new Armor("iron", c));
@@ -266,10 +266,10 @@ public class Dungeon {
                 System.out.println("You found Excalibur! It deals 3 damage, and your current weapon deals "
                     + hero.getWeapon().getAttack() + " damage.");
                 System.out.println("Would you like to switch weapons? (y/n)");
-                String input = s.next().toLowerCase();
+                String input = s.nextLine().toLowerCase();
                 while (!input.equals("y") && !input.equals("n")) {
                     System.out.println("Invalid response. Would you like to switch weapons? (y/n)");
-                    input = s.next().toLowerCase();
+                    input = s.nextLine().toLowerCase();
                 }
                 if (input.equals("y"))
                     hero.setWeapon(new Weapon("excalibur", c));
@@ -279,10 +279,10 @@ public class Dungeon {
                 System.out.println("You found iron armor! It has 2 defense and 0 dodge, and your current armor has " +
                     hero.getArmor().getDefense() + " defense and " + hero.getArmor().getDodge() + " dodge.");
                 System.out.println("Would you like to switch armor? (y/n)");
-                String input = s.next().toLowerCase();
+                String input = s.nextLine().toLowerCase();
                 while (!input.equals("y") && !input.equals("n")) {
                     System.out.println("Invalid response. Would you like to switch armor? (y/n)");
-                    input = s.next().toLowerCase();
+                    input = s.nextLine().toLowerCase();
                 }
                 if (input.equals("y"))
                     hero.setArmor(new Armor("iron", c));
