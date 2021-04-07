@@ -69,6 +69,10 @@ public class Hero extends Character {
         this.armor = armor;
     }
 
+    public void addItem(String item) {
+        items.add(item);
+    }
+
     public String getStats() {
         String output = "HP: " + health + "/" + maxHealth + "\n";
         output += "Attack: " + attack;

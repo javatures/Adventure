@@ -199,6 +199,7 @@ public class Dungeon {
                 }
                 if (!reward) {
                     System.out.println("You found a HP potion! It has been added to your inventory.");
+                    hero.addItem("hp potion");
                 }
                 break;
             case 2:
@@ -230,6 +231,7 @@ public class Dungeon {
             }
             if (!reward) {
                 System.out.println("You found a max HP potion! It has been added to your inventory.");
+                hero.addItem("max hp potion");
             }
             break;
             case 3:
@@ -261,6 +263,7 @@ public class Dungeon {
             }
             if (!reward) {
                 System.out.println("You found a dodge potion! It has been added to your inventory.");
+                hero.addItem("dodge potion");
             }
             break;
             case 4:
@@ -292,7 +295,9 @@ public class Dungeon {
             }
             if (!reward) {
                 System.out.println("You found a HP potion! It has been added to your inventory.");
+                hero.addItem("hp potion");
                 System.out.println("You found an attack potion! It has been added to your inventory.");
+                hero.addItem("attack potion");
             }
             break;
             case 5: break;

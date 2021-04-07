@@ -20,5 +20,11 @@ public class HeroTest {
         }
         Hero hero = new Hero(new Random(), c);
         assertEquals(hero.getLevel(), 1);
+        assertEquals(hero.getAttack(), 2);
+        assertEquals(hero.getWeapon().getName(), "none");
+        assertEquals(hero.getWeapon().getAttack(), 0);
+        assertEquals(hero.getArmor().getName(), "none");
+        assertEquals(hero.getArmor().getDefense(), 0);
+        assertEquals(hero.getArmor().getDodge(), 0);
     }
 }
